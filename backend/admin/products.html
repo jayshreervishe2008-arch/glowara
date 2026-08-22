@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glowara Admin | Products</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+
+    <style>
+
+        .product-form {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 25px rgba(0,0,0,.04);
+        }
+
+        .product-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            font-size: 13px;
+        }
+
+        .form-group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #e83e8c;
+        }
+
+        .add-product-btn {
+            margin-top: 20px;
+            padding: 13px 25px;
+            border: none;
+            border-radius: 6px;
+            background: #111;
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .add-product-btn:hover {
+            background: #e83e8c;
+            transform: translateY(-2px);
+        }
+
+        .product-message {
+            margin-top: 15px;
+            min-height: 18px;
+            font-size: 13px;
+        }
+
+        .admin-product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .admin-product-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 25px rgba(0,0,0,.04);
+            border: 1px solid #eee;
+        }
+
+        .admin-product-image {
+            height: 250px;
+            background: #f7f7f7;
+        }
+
+        .admin-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .admin-product-info {
+            padding: 15px;
+        }
+
+        .admin-brand {
+            color: #e83e8c;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .admin-product-name {
+            font-size: 14px;
+            margin: 8px 0;
+            min-height: 40px;
+        }
+
+        .admin-product-price {
+            font-weight: 700;
+        }
+
+        .admin-stock {
+            margin-top: 7px;
+            color: #777;
+            font-size: 12px;
+        }
+
+        .loading-box,
+        .empty-box {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px;
+            color: #888;
+            background: #fff;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 1000px) {
+            .admin-product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 750px) {
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .admin-product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 500px) {
+            .admin-product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="admin-logo">
+            GLOWARA
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                <span>📊</span>
+                Dashboard
+            </a>
+
+            <a href="products.html" class="active">
+                <span>🛍️</span>
+                Products
+            </a>
+
+            <a href="orders.html">
+                <span>📦</span>
+                Orders
+            </a>
+
+            <a href="users.html">
+                <span>👤</span>
+                Users
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+                <h1>Products</h1>
+                <p>Add and manage Glowara products</p>
+            </div>
+
+            <button
+                class="refresh-btn"
+                onclick="loadProducts()"
+            >
+                ↻ Refresh
+            </button>
+
+        </header>
+
+
+        <section class="product-form">
+
+            <h2>Add New Product</h2>
+
+            <form id="productForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>Product Name</label>
+
+                        <input
+                            type="text"
+                            id="productName"
+                            placeholder="e.g. Hydrating Face Serum"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Brand</label>
+
+                        <input
+                            type="text"
+                            id="productBrand"
+                            placeholder="e.g. Glowara"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Category</label>
+
+                        <select id="productCategory" required>
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option value="Makeup">
+                                Makeup
+                            </option>
+
+                            <option value="Skincare">
+                                Skincare
+                            </option>
+
+                            <option value="Haircare">
+                                Haircare
+                            </option>
+
+                            <option value="Fragrance">
+                                Fragrance
+                            </option>
+
+                            <option value="Bath & Body">
+                                Bath & Body
+                            </option>
+
+                            <option value="Wellness">
+                                Wellness
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Price</label>
+
+                        <input
+                            type="number"
+                            id="productPrice"
+                            min="0"
+                            required
+                            placeholder="699"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Old Price</label>
+
+                        <input
+                            type="number"
+                            id="productOldPrice"
+                            min="0"
+                            required
+                            placeholder="999"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Stock</label>
+
+                        <input
+                            type="number"
+                            id="productStock"
+                            min="0"
+                            required
+                            placeholder="50"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>Image Path</label>
+
+                        <input
+                            type="text"
+                            id="productImage"
+                            placeholder="/images/products/product.jpg"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>Description</label>
+
+                        <textarea
+                            id="productDescription"
+                            placeholder="Enter product description..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="add-product-btn"
+                >
+                    + ADD PRODUCT
+                </button>
+
+
+                <div
+                    id="productMessage"
+                    class="product-message"
+                ></div>
+
+            </form>
+
+        </section>
+
+
+        <section>
+
+            <div class="section-header"
+                 style="margin-bottom:20px;">
+
+                <div>
+                    <h2>All Products</h2>
+                    <p>Products currently in MongoDB</p>
+                </div>
+
+            </div>
+
+
+            <div
+                id="adminProductGrid"
+                class="admin-product-grid"
+            ></div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/products.js"></script>
+    <script src="js/admin-products.js"></script>
+
+</body>
+
+</html>

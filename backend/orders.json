@@ -1,0 +1,251 @@
+[
+  {
+    "orderId": "GW1786870154125",
+    "customer": {
+      "name": "Jayshree Vishe",
+      "phone": "7021562506",
+      "email": "jayshreervishe2008@gmail.com",
+      "address": "nxkwn",
+      "city": "abc",
+      "pincode": "12346"
+    },
+    "products": [
+      {
+        "id": 2,
+        "brand": "Glowara",
+        "name": "Hydrating Beauty Cream",
+        "category": "Skincare",
+        "price": 549,
+        "oldPrice": 799,
+        "rating": 4.7,
+        "reviews": 89,
+        "image": "images/products/cream.jpg",
+        "quantity": 2
+      },
+      {
+        "id": 3,
+        "brand": "Glowara",
+        "name": "Velvet Matte Lipstick",
+        "category": "Makeup",
+        "price": 399,
+        "oldPrice": 599,
+        "rating": 4.9,
+        "reviews": 210,
+        "image": "images/products/lipstick.jpg",
+        "quantity": 2
+      },
+      {
+        "id": 4,
+        "brand": "Glowara",
+        "name": "Luxury Eau De Parfum",
+        "category": "Fragrance",
+        "price": 899,
+        "oldPrice": 1299,
+        "rating": 4.6,
+        "reviews": 76,
+        "image": "images/products/perfum.jpg",
+        "quantity": 1
+      },
+      {
+        "id": 7,
+        "brand": "Glowara",
+        "name": "Premium Kajal",
+        "category": "Makeup",
+        "price": 299,
+        "oldPrice": 449,
+        "rating": 4.9,
+        "reviews": 302,
+        "image": "images/products/kajal.jpg",
+        "quantity": 3
+      },
+      {
+        "id": 6,
+        "brand": "Glowara",
+        "name": "Nourishing Hair Mask",
+        "category": "Haircare",
+        "price": 499,
+        "oldPrice": 699,
+        "rating": 4.7,
+        "reviews": 63,
+        "image": "images/products/hair-mask.jpg",
+        "quantity": 4
+      }
+    ],
+    "status": "New",
+    "createdAt": "2026-08-16T08:49:14.126Z"
+  },
+  {
+    "orderId": "GW1786870935616",
+    "customer": {
+      "name": "Jayshree Vishe",
+      "phone": "7021562506",
+      "email": "jayshreervishe2008@gmail.com",
+      "address": "fef",
+      "city": "abc",
+      "pincode": "123456"
+    },
+    "products": [
+      {
+        "id": 3,
+        "brand": "Glowara",
+        "name": "Velvet Matte Lipstick",
+        "category": "Makeup",
+        "price": 399,
+        "oldPrice": 599,
+        "rating": 4.9,
+        "reviews": 210,
+        "image": "images/products/lipstick.jpg",
+        "quantity": 1
+      }
+    ],
+    "status": "New",
+    "createdAt": "2026-08-16T09:02:15.616Z"
+  },
+  {
+    "orderId": "GW1786957593547",
+    "customer": {
+      "name": "Jayshree Vishe",
+      "phone": "7021562506",
+      "email": "jayshreervishe2008@gmail.com",
+      "address": "abc",
+      "city": "vh",
+      "pincode": "123456"
+    },
+    "products": [
+      {
+        "id": 5,
+        "brand": "Glowara",
+        "name": "Vitamin C Brightening Serum",
+        "category": "Skincare",
+        "price": 749,
+        "oldPrice": 1099,
+        "rating": 4.8,
+        "reviews": 156,
+        "image": "images/products/vitamin-c.jpg",
+        "quantity": 1
+      }
+    ],
+    "createdAt": "2026-08-17T09:06:33.547Z",
+    "status": "New"
+  },
+  {
+    "orderId": "GW1787031127672",
+    "customer": {
+      "name": "Jayshree Vishe",
+      "phone": "4854651210",
+      "email": "jayshreervishe2008@gmail.com",
+      "address": "rtuyy",
+      "city": "abc",
+      "pincode": "123456"
+    },
+    "products": [
+      {
+        "id": "6a83daf8c215d62823826966",
+        "name": "Cooling Eye Mask",
+        "brand": "Glowara",
+        "price": 599,
+        "oldPrice": 909,
+        "image": "/images/products/green-tea.jpg",
+        "quantity": 1
+      },
+      {
+        "id": "6a83daf8c215d6282382693c",
+        "name": "Lavender Mist",
+        "brand": "Glowara",
+        "price": 799,
+        "oldPrice": 949,
+        "image": "/images/products/rose%20perfume.jpg",
+        "quantity": 1
+      }
+    ],
+    "createdAt": "2026-08-18T05:32:07.672Z",
+    "status": "New"
+  },
+  {
+    "orderId": "GW1787053234706",
+    "customer": {
+      "name": "Jayshree Vishe",
+      "phone": "4854651210",
+      "email": "jayshreervishe2008@gmail.com",
+      "address": "kmlkm",
+      "city": "abc",
+      "pincode": "123456"
+    },
+    "products": [
+      {
+        "id": "6a8436be69a0f0418afa6b27",
+        "name": "Relaxing Pillow Mist",
+        "brand": "Glowara",
+        "price": 299,
+        "oldPrice": 529,
+        "image": "/images/products/pillow-mist.jpg",
+        "quantity": 1
+      },
+      {
+        "id": "6a8436be69a0f0418afa6ad4",
+        "name": "Ultra Black Kajal",
+        "brand": "Glowara",
+        "price": 399,
+        "oldPrice": 709,
+        "image": "/images/products/kajal.jpg",
+        "quantity": 1
+      }
+    ],
+    "createdAt": "2026-08-18T11:40:34.706Z",
+    "status": "New"
+  },
+  {
+    "orderId": "GW1787142952681",
+    "customer": {
+      "name": "Jayshree Vishe",
+      "phone": "4854651210",
+      "email": "jayshreervishe2008@gmail.com",
+      "address": "bjm",
+      "city": "abc",
+      "pincode": "123456"
+    },
+    "products": [
+      {
+        "id": 2,
+        "brand": "Glowara",
+        "name": "Hydrating Beauty Cream",
+        "category": "Skincare",
+        "price": 549,
+        "oldPrice": 799,
+        "rating": 4.7,
+        "reviews": 89,
+        "image": "images/products/cream.jpg",
+        "quantity": 4
+      },
+      {
+        "id": "6a8436be69a0f0418afa6b09",
+        "name": "Musk & Rose Perfume",
+        "brand": "Glowara",
+        "price": 1099,
+        "oldPrice": 1249,
+        "image": "/images/products/musk-perfume.jpg",
+        "quantity": 1
+      },
+      {
+        "id": "6a8436be69a0f0418afa6b26",
+        "name": "Refreshing Mint Tea",
+        "brand": "Glowara",
+        "price": 699,
+        "oldPrice": 849,
+        "image": "/images/products/mint-tea.jpg",
+        "quantity": 1
+      },
+      {
+        "id": "6a8436be69a0f0418afa6b0e",
+        "name": "Rose Bloom Eau De Parfum",
+        "brand": "Glowara",
+        "price": 1099,
+        "oldPrice": 1329,
+        "image": "/images/products/rose%20perfume.jpg",
+        "quantity": 1
+      }
+    ],
+    "createdAt": "2026-08-19T12:35:52.681Z",
+    "status": "New"
+  }
+]

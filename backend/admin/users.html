@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Glowara Admin | Users</title>
+
+    <link
+        rel="stylesheet"
+        href="css/admin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <aside class="sidebar">
+
+        <div class="admin-logo">
+            GLOWARA
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+
+                <span>📊</span>
+
+                Dashboard
+
+            </a>
+
+
+            <a href="products.html">
+
+                <span>🛍️</span>
+
+                Products
+
+            </a>
+
+
+            <a href="orders.html">
+
+                <span>📦</span>
+
+                Orders
+
+            </a>
+
+
+            <a
+                href="users.html"
+                class="active"
+            >
+
+                <span>👤</span>
+
+                Users
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+
+    <main class="main">
+
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Users
+                </h1>
+
+                <p>
+                    Registered Glowara customers
+                </p>
+
+            </div>
+
+
+            <button
+                class="refresh-btn"
+                onclick="loadUsers()"
+            >
+                ↻ Refresh
+            </button>
+
+        </header>
+
+
+
+        <section class="orders-section">
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Customer Accounts
+                    </h2>
+
+                    <p>
+                        Users registered through Glowara
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Role
+                            </th>
+
+                            <th>
+                                Joined
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="usersTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <script src="js/admin-users.js"></script>
+
+
+</body>
+
+</html>

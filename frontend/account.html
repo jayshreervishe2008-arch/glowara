@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Glowara | My Account</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .account-page {
+            min-height: 70vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            background: #fff;
+        }
+
+        .account-box {
+            width: 100%;
+            max-width: 550px;
+            padding: 45px;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.08);
+            text-align: center;
+        }
+
+        .account-icon {
+            width: 80px;
+            height: 80px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #fff1f6;
+            color: #e83e8c;
+            font-size: 32px;
+        }
+
+        .account-box h1 {
+            margin-top: 20px;
+        }
+
+        .welcome {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .user-info {
+            text-align: left;
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .user-info p {
+            margin: 10px 0;
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 7px;
+            background: #111;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .logout-btn:hover {
+            background: #e83e8c;
+            transform: translateY(-2px);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <main class="account-page">
+
+        <div class="account-box">
+
+            <div class="account-icon">
+                <i class="fa-regular fa-user"></i>
+            </div>
+
+            <h1>My Account</h1>
+
+            <p class="welcome">
+                Welcome to Glowara!
+            </p>
+
+            <div class="user-info">
+
+                <p>
+                    <strong>Name:</strong>
+                    <span id="userName"></span>
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+                    <span id="userEmail"></span>
+                </p>
+
+            </div>
+
+            <button
+                id="logoutBtn"
+                class="logout-btn"
+            >
+                LOGOUT
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js">
+    </script>
+
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                const user =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "glowaraUser"
+                        )
+                    );
+
+
+                // User login केलेला नसेल
+                if (!user) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+
+                document.getElementById(
+                    "userName"
+                ).textContent =
+                    user.name;
+
+
+                document.getElementById(
+                    "userEmail"
+                ).textContent =
+                    user.email;
+
+
+                // LOGOUT
+                document.getElementById(
+                    "logoutBtn"
+                ).addEventListener(
+                    "click",
+                    () => {
+
+                        localStorage.removeItem(
+                            "glowaraUser"
+                        );
+
+                        localStorage.removeItem(
+                            "glowaraToken"
+                        );
+
+                        window.location.href =
+                            "login.html";
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

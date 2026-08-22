@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glowara Admin | Dashboard</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+    <aside class="sidebar">
+
+        <div class="admin-logo">
+            GLOWARA
+        </div>
+
+        <nav>
+
+            <a href="index.html" class="active">
+                <span>📊</span>
+                Dashboard
+            </a>
+
+            <a href="products.html">
+                <span>🛍️</span>
+                Products
+            </a>
+
+            <a href="orders.html">
+                <span>📦</span>
+                Orders
+            </a>
+
+            <a href="users.html">
+                <span>👤</span>
+                Users
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <div>
+                <h1>Dashboard</h1>
+
+                <p>
+                    Welcome to Glowara Admin Panel
+                </p>
+            </div>
+
+            <button
+                class="refresh-btn"
+                onclick="loadDashboard()"
+            >
+                ↻ Refresh
+            </button>
+
+        </header>
+
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🛍️
+                </div>
+
+                <div>
+
+                    <p>Total Products</p>
+
+                    <h2 id="totalProducts">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📦
+                </div>
+
+                <div>
+
+                    <p>Total Orders</p>
+
+                    <h2 id="totalOrders">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🆕
+                </div>
+
+                <div>
+
+                    <p>New Orders</p>
+
+                    <h2 id="newOrders">
+                        0
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ₹
+                </div>
+
+                <div>
+
+                    <p>Total Revenue</p>
+
+                    <h2 id="totalRevenue">
+                        ₹0
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="orders-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>
+                        Recent Orders
+                    </h2>
+
+                    <p>
+                        Latest orders from customers
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Order ID
+                            </th>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Total
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="recentOrders">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/admin-dashboard.js"></script>
+
+</body>
+
+</html>
