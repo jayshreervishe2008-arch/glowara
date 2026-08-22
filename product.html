@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glowara | Product</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/components.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <style>
+
+        .product-page {
+            max-width: 1250px;
+            margin: auto;
+            padding: 45px 25px 90px;
+        }
+
+        .breadcrumb {
+            color: #888;
+            font-size: 12px;
+            margin-bottom: 30px;
+        }
+
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            align-items: start;
+        }
+
+        .product-detail-image {
+            height: 620px;
+            background: #f8f8f8;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .6s ease;
+        }
+
+        .product-detail-image:hover img {
+            transform: scale(1.04);
+        }
+
+        .product-details {
+            padding-top: 15px;
+        }
+
+        .detail-brand {
+            color: #e83e8c;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .detail-name {
+            font-size: 38px;
+            line-height: 1.2;
+            margin: 12px 0 18px;
+        }
+
+        .detail-rating {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 8px 12px;
+            background: #fff1f6;
+            border-radius: 5px;
+            color: #e83e8c;
+            font-size: 13px;
+        }
+
+        .detail-price {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .current-price {
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        .detail-old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 16px;
+        }
+
+        .offer {
+            color: #e83e8c;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .detail-description {
+            margin: 25px 0;
+            color: #666;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        .quantity-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .quantity-control button {
+            width: 42px;
+            height: 42px;
+            border: none;
+            background: #fff;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .quantity-control button:hover {
+            background: #f8f8f8;
+        }
+
+        .quantity-control span {
+            width: 45px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* PRODUCT ACTIONS */
+
+        .product-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+            align-items: stretch;
+        }
+
+        .buy-btn,
+        .detail-add-btn {
+            flex: 1;
+            padding: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            border: none;
+            transition: .3s;
+        }
+
+        .detail-add-btn {
+            background: #111;
+            color: white;
+        }
+
+        .detail-add-btn:hover {
+            background: #e83e8c;
+            transform: translateY(-2px);
+        }
+
+        .buy-btn {
+            background: #e83e8c;
+            color: white;
+        }
+
+        .buy-btn:hover {
+            background: #111;
+            transform: translateY(-2px);
+        }
+
+        /* WISHLIST BUTTON */
+
+        .detail-wishlist-btn {
+            width: 56px;
+            min-width: 56px;
+            border: 1px solid #ddd;
+            background: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #e83e8c;
+            font-size: 20px;
+            transition: .3s;
+        }
+
+        .detail-wishlist-btn:hover {
+            background: #fff1f6;
+            border-color: #e83e8c;
+            transform: translateY(-2px);
+        }
+
+        .detail-wishlist-btn.active {
+            background: #e83e8c;
+            color: #fff;
+            border-color: #e83e8c;
+        }
+
+        .benefits {
+            margin-top: 35px;
+            border-top: 1px solid #eee;
+            padding-top: 25px;
+        }
+
+        .benefit {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+            font-size: 13px;
+        }
+
+        .benefit i {
+            color: #e83e8c;
+            width: 20px;
+        }
+
+        .not-found {
+            text-align: center;
+            padding: 120px 20px;
+            grid-column: 1 / -1;
+        }
+
+        .not-found a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 22px;
+            background: #111;
+            color: #fff;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 800px) {
+
+            .product-detail {
+                grid-template-columns: 1fr;
+            }
+
+            .product-detail-image {
+                height: 450px;
+            }
+
+            .detail-name {
+                font-size: 30px;
+            }
+
+            .product-actions {
+                flex-wrap: wrap;
+            }
+
+            .detail-wishlist-btn {
+                width: 100%;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .detail-wishlist-btn {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="header-main">
+
+            <a href="index.html" class="logo">
+                <span>G</span>LOWARA
+            </a>
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    placeholder="Search products..."
+                >
+
+            </div>
+
+            <div class="header-actions">
+
+                <a href="login.html">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Account</span>
+                </a>
+
+                <a href="cart.html">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Bag</span>
+                    <b id="cartCount">0</b>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <nav class="navbar">
+
+            <a href="index.html">Home</a>
+            <a href="shop.html">Makeup</a>
+            <a href="shop.html">Skincare</a>
+            <a href="shop.html">Haircare</a>
+            <a href="shop.html">Fragrance</a>
+            <a href="shop.html">Bath & Body</a>
+            <a href="shop.html">Wellness</a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="product-page">
+
+        <div class="breadcrumb">
+            Home / Shop / Product
+        </div>
+
+        <section
+            id="productContainer"
+            class="product-detail"
+        ></section>
+
+    </main>
+
+
+    <div id="toast" class="toast"></div>
+
+
+    <script src="js/products.js"></script>
+    <script src="js/app.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+
+    const container =
+        document.getElementById("productContainer");
+
+    if (!productId) {
+
+        container.innerHTML = `
+            <div class="not-found">
+
+                <h2>Product not found</h2>
+
+                <p>
+                    Sorry, this product does not exist.
+                </p>
+
+                <a href="shop.html">
+                    Back to Shop
+                </a>
+
+            </div>
+        `;
+
+        return;
+    }
+
+    try {
+
+        container.innerHTML = `
+            <div class="not-found">
+                <h2>Loading product...</h2>
+            </div>
+        `;
+
+        const response = await fetch(
+            `/api/products/${productId}`
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success || !data.product) {
+            throw new Error("Product not found");
+        }
+
+        const product = data.product;
+
+        container.innerHTML = `
+
+            <div class="product-detail-image">
+
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                >
+
+            </div>
+
+            <div class="product-details">
+
+                <div class="detail-brand">
+                    ${product.brand}
+                </div>
+
+                <h1 class="detail-name">
+                    ${product.name}
+                </h1>
+
+                <div class="detail-rating">
+
+                    ★ ${product.rating}
+
+                    <span>
+                        (${product.reviews} Reviews)
+                    </span>
+
+                </div>
+
+                <div class="detail-price">
+
+                    <span class="current-price">
+                        ₹${product.price}
+                    </span>
+
+                    <span class="detail-old-price">
+                        ₹${product.oldPrice}
+                    </span>
+
+                    <span class="offer">
+                        SPECIAL OFFER
+                    </span>
+
+                </div>
+
+                <p class="detail-description">
+
+                    Discover the perfect beauty
+                    essential from Glowara.
+                    Carefully curated to add
+                    confidence, comfort and a
+                    beautiful glow to your
+                    everyday routine.
+
+                </p>
+
+                <div class="quantity-title">
+                    Quantity
+                </div>
+
+                <div class="quantity-control">
+
+                    <button id="minusBtn">
+                        −
+                    </button>
+
+                    <span id="quantity">
+                        1
+                    </span>
+
+                    <button id="plusBtn">
+                        +
+                    </button>
+
+                </div>
+
+                <div class="product-actions">
+
+                    <button
+                        class="detail-wishlist-btn"
+                        id="wishlistBtn"
+                        title="Add to Wishlist"
+                        type="button"
+                    >
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+
+                    <button
+                        class="detail-add-btn"
+                        id="addProductBtn"
+                        type="button"
+                    >
+                        ADD TO CART
+                    </button>
+
+                    <button
+                        class="buy-btn"
+                        id="buyNowBtn"
+                        type="button"
+                    >
+                        BUY NOW
+                    </button>
+
+                </div>
+
+                <div class="benefits">
+
+                    <div class="benefit">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <span>
+                            Free shipping on orders above ₹999
+                        </span>
+                    </div>
+
+                    <div class="benefit">
+                        <i class="fa-solid fa-shield-heart"></i>
+                        <span>
+                            100% authentic beauty products
+                        </span>
+                    </div>
+
+                    <div class="benefit">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        <span>
+                            Easy returns
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+        `;
+
+
+        /* =========================
+           QUANTITY
+        ========================= */
+
+        let quantity = 1;
+
+        const quantityElement =
+            document.getElementById("quantity");
+
+        document
+            .getElementById("plusBtn")
+            .addEventListener("click", () => {
+
+                quantity++;
+
+                quantityElement.textContent =
+                    quantity;
+
+            });
+
+
+        document
+            .getElementById("minusBtn")
+            .addEventListener("click", () => {
+
+                if (quantity > 1) {
+                    quantity--;
+                }
+
+                quantityElement.textContent =
+                    quantity;
+
+            });
+
+
+        /* =========================
+           ADD TO CART
+        ========================= */
+
+        document
+            .getElementById("addProductBtn")
+            .addEventListener("click", () => {
+
+                let cart =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "glowaraCart"
+                        )
+                    ) || [];
+
+                const existing =
+                    cart.find(
+                        item =>
+                            item.id === product._id
+                    );
+
+                if (existing) {
+
+                    existing.quantity += quantity;
+
+                } else {
+
+                    cart.push({
+
+                        id: product._id,
+
+                        name: product.name,
+
+                        brand: product.brand,
+
+                        price: product.price,
+
+                        oldPrice: product.oldPrice,
+
+                        image: product.image,
+
+                        quantity: quantity
+
+                    });
+
+                }
+
+                localStorage.setItem(
+                    "glowaraCart",
+                    JSON.stringify(cart)
+                );
+
+                if (
+                    typeof updateCartCount ===
+                    "function"
+                ) {
+                    updateCartCount();
+                }
+
+                if (
+                    typeof showToast ===
+                    "function"
+                ) {
+                    showToast(
+                        "Product added to bag"
+                    );
+                } else {
+                    alert(
+                        "Product added to bag"
+                    );
+                }
+
+            });
+
+
+        /* =========================
+           BUY NOW
+        ========================= */
+
+        document
+            .getElementById("buyNowBtn")
+            .addEventListener("click", () => {
+
+                let cart =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "glowaraCart"
+                        )
+                    ) || [];
+
+                const existing =
+                    cart.find(
+                        item =>
+                            item.id === product._id
+                    );
+
+                if (existing) {
+
+                    existing.quantity += quantity;
+
+                } else {
+
+                    cart.push({
+
+                        id: product._id,
+
+                        name: product.name,
+
+                        brand: product.brand,
+
+                        price: product.price,
+
+                        oldPrice: product.oldPrice,
+
+                        image: product.image,
+
+                        quantity: quantity
+
+                    });
+
+                }
+
+                localStorage.setItem(
+                    "glowaraCart",
+                    JSON.stringify(cart)
+                );
+
+                window.location.href =
+                    "checkout.html";
+
+            });
+
+
+        /* =========================
+           WISHLIST
+        ========================= */
+
+        const wishlistBtn =
+            document.getElementById(
+                "wishlistBtn"
+            );
+
+        let wishlist =
+            JSON.parse(
+                localStorage.getItem(
+                    "glowaraWishlist"
+                )
+            ) || [];
+
+
+        function updateWishlistButton() {
+
+            if (
+                wishlist.includes(product._id)
+            ) {
+
+                wishlistBtn.classList.add(
+                    "active"
+                );
+
+                wishlistBtn.innerHTML =
+                    '<i class="fa-solid fa-heart"></i>';
+
+            } else {
+
+                wishlistBtn.classList.remove(
+                    "active"
+                );
+
+                wishlistBtn.innerHTML =
+                    '<i class="fa-regular fa-heart"></i>';
+
+            }
+
+        }
+
+
+        updateWishlistButton();
+
+
+        wishlistBtn.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    wishlist.includes(product._id)
+                ) {
+
+                    wishlist =
+                        wishlist.filter(
+                            id =>
+                                id !== product._id
+                        );
+
+                } else {
+
+                    wishlist.push(
+                        product._id
+                    );
+
+                }
+
+                localStorage.setItem(
+                    "glowaraWishlist",
+                    JSON.stringify(wishlist)
+                );
+
+                updateWishlistButton();
+
+            }
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Product Details Error:",
+            error
+        );
+
+        container.innerHTML = `
+
+            <div class="not-found">
+
+                <h2>
+                    Product not found
+                </h2>
+
+                <p>
+                    Sorry, this product does not exist.
+                </p>
+
+                <a href="shop.html">
+                    Back to Shop
+                </a>
+
+            </div>
+
+        `;
+
+    }
+
+});
+</script>
+</body>
+</html>

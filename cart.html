@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glowara | Shopping Bag</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .cart-page {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 25px;
+        }
+
+        .cart-title {
+            font-size: 30px;
+            margin-bottom: 30px;
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            background: white;
+            animation: cartIn .4s ease;
+        }
+
+        .cart-item-image {
+            width: 120px;
+            height: 140px;
+            flex-shrink: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #f7f7f7;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-brand {
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cart-name {
+            margin: 8px 0;
+            font-size: 17px;
+        }
+
+        .cart-price {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .quantity-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .quantity-box button {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .quantity-box button:hover {
+            background: #111;
+            color: white;
+        }
+
+        .remove-btn {
+            margin-top: 15px;
+            border: none;
+            background: transparent;
+            color: #e91e63;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .summary {
+            padding: 25px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .summary h2 {
+            margin-bottom: 25px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+        }
+
+        .summary-total {
+            border-top: 1px solid #ddd;
+            padding-top: 18px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            border: none;
+            background: #e91e63;
+            color: white;
+            font-weight: bold;
+            border-radius: 7px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .checkout-btn:hover {
+            background: #111;
+            transform: translateY(-2px);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .empty-cart h2 {
+            margin-bottom: 10px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 13px 25px;
+            background: #111;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        @keyframes cartIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media(max-width: 800px) {
+
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cart-page">
+
+        <h1 class="cart-title">
+            My Shopping Bag
+        </h1>
+
+        <div class="cart-layout">
+
+            <div id="cartItems"></div>
+
+            <div class="summary">
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">₹0</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Discount</span>
+                    <span id="discount">₹0</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Delivery</span>
+                    <span id="delivery">FREE</span>
+                </div>
+
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span id="total">₹0</span>
+                </div>
+
+                <button
+                    class="checkout-btn"
+                    onclick="goToCheckout()"
+                >
+                    PROCEED TO CHECKOUT
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/cart.js"></script>
+
+</body>
+
+</html>

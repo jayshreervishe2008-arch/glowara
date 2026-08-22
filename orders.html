@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Glowara | My Orders</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <style>
+
+        .orders-page {
+            max-width: 1100px;
+            margin: auto;
+            padding: 60px 25px 90px;
+        }
+
+        .orders-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .orders-heading span {
+            color: #e83e8c;
+            font-size: 11px;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .orders-heading h1 {
+            font-size: 38px;
+            margin: 10px 0;
+        }
+
+        .orders-heading p {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .order-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.04);
+            animation: orderIn .5s ease;
+        }
+
+        .order-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+        }
+
+        .order-id {
+            font-weight: 800;
+            font-size: 14px;
+        }
+
+        .order-date {
+            color: #888;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .order-status {
+            padding: 7px 12px;
+            border-radius: 20px;
+            background: #ffe5f0;
+            color: #e83e8c;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .order-products {
+            margin-top: 20px;
+        }
+
+        .order-product {
+            display: flex;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .order-product:last-child {
+            border-bottom: none;
+        }
+
+        .order-product-image {
+            width: 75px;
+            height: 85px;
+            background: #f7f7f7;
+            border-radius: 7px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .order-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .order-product-info {
+            flex: 1;
+        }
+
+        .order-product-name {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .order-product-meta {
+            color: #888;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .order-product-price {
+            margin-top: 7px;
+            font-weight: 700;
+        }
+
+        .order-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid #eee;
+        }
+
+        .order-total-label {
+            color: #777;
+            font-size: 13px;
+        }
+
+        .order-total {
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .empty-orders {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .empty-orders i {
+            font-size: 55px;
+            color: #e83e8c;
+            margin-bottom: 20px;
+        }
+
+        .empty-orders h2 {
+            margin-bottom: 10px;
+        }
+
+        .empty-orders p {
+            color: #888;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 13px 24px;
+            background: #111;
+            color: #fff;
+            border-radius: 6px;
+        }
+
+        .error-box {
+            text-align: center;
+            color: #d62828;
+            padding: 50px;
+        }
+
+        @keyframes orderIn {
+
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .orders-heading h1 {
+                font-size: 30px;
+            }
+
+            .order-card {
+                padding: 18px;
+            }
+
+            .order-bottom {
+                align-items: flex-start;
+                gap: 10px;
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="header-main">
+
+            <a href="index.html" class="logo">
+                <span>G</span>LOWARA
+            </a>
+
+            <div class="header-actions">
+
+                <a href="index.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="cart.html">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Bag</span>
+                    <b id="cartCount">0</b>
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="orders-page">
+
+        <div class="orders-heading">
+
+            <span>YOUR PURCHASES</span>
+
+            <h1>My Orders</h1>
+
+            <p>
+                Track your Glowara orders and
+                view your purchase history.
+            </p>
+
+        </div>
+
+
+        <section id="ordersContainer"></section>
+
+    </main>
+
+
+    <script src="js/products.js"></script>
+    <script src="js/app.js"></script>
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            loadCustomerOrders
+        );
+
+
+        async function loadCustomerOrders() {
+
+            const container =
+                document.getElementById(
+                    "ordersContainer"
+                );
+
+            try {
+
+                const response =
+                    await fetch(
+                        "/api/admin/orders"
+                    );
+
+                const data =
+                    await response.json();
+
+
+                if (!data.success) {
+
+                    throw new Error(
+                        "Unable to load orders"
+                    );
+
+                }
+
+
+                const orders =
+                    data.orders || [];
+
+
+                if (orders.length === 0) {
+
+                    container.innerHTML = `
+
+                        <div class="empty-orders">
+
+                            <i class="fa-solid fa-box-open"></i>
+
+                            <h2>
+                                No orders yet
+                            </h2>
+
+                            <p>
+                                Your placed orders
+                                will appear here.
+                            </p>
+
+                            <a
+                                href="shop.html"
+                                class="shop-btn"
+                            >
+                                START SHOPPING
+                            </a>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                container.innerHTML = "";
+
+
+                [...orders]
+                    .reverse()
+                    .forEach(order => {
+
+                        let total = 0;
+
+
+                        const productsHTML =
+                            order.products
+                                .map(item => {
+
+                                    total +=
+                                        Number(item.price) *
+                                        Number(item.quantity);
+
+                                    return `
+
+                                        <div
+                                            class="order-product"
+                                        >
+
+                                            <div
+                                                class="order-product-image"
+                                            >
+
+                                                <img
+                                                    src="${item.image}"
+                                                    alt="${item.name}"
+                                                >
+
+                                            </div>
+
+
+                                            <div
+                                                class="order-product-info"
+                                            >
+
+                                                <div
+                                                    class="order-product-name"
+                                                >
+                                                    ${item.name}
+                                                </div>
+
+                                                <div
+                                                    class="order-product-meta"
+                                                >
+                                                    Quantity:
+                                                    ${item.quantity}
+                                                </div>
+
+                                                <div
+                                                    class="order-product-price"
+                                                >
+                                                    ₹${Number(item.price) * Number(item.quantity)}
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    `;
+
+                                })
+                                .join("");
+
+
+                        const discount =
+                            Math.round(
+                                total * 0.10
+                            );
+
+
+                        const finalTotal =
+                            total - discount;
+
+
+                        const date =
+                            new Date(
+                                order.createdAt
+                            ).toLocaleString(
+                                "en-IN"
+                            );
+
+
+                        container.innerHTML += `
+
+                            <article
+                                class="order-card"
+                            >
+
+                                <div
+                                    class="order-top"
+                                >
+
+                                    <div>
+
+                                        <div
+                                            class="order-id"
+                                        >
+                                            Order ID:
+                                            ${order.orderId}
+                                        </div>
+
+                                        <div
+                                            class="order-date"
+                                        >
+                                            ${date}
+                                        </div>
+
+                                    </div>
+
+
+                                    <span
+                                        class="order-status"
+                                    >
+                                        ${order.status}
+                                    </span>
+
+                                </div>
+
+
+                                <div
+                                    class="order-products"
+                                >
+
+                                    ${productsHTML}
+
+                                </div>
+
+
+                                <div
+                                    class="order-bottom"
+                                >
+
+                                    <span
+                                        class="order-total-label"
+                                    >
+                                        Order Total
+                                    </span>
+
+                                    <span
+                                        class="order-total"
+                                    >
+                                        ₹${finalTotal}
+                                    </span>
+
+                                </div>
+
+                            </article>
+
+                        `;
+
+                    });
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                container.innerHTML = `
+
+                    <div
+                        class="error-box"
+                    >
+                        Unable to load your orders.
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
