@@ -147,16 +147,15 @@ async function placeOrder(event) {
     try {
 
 const response = await fetch(
-    "http://localhost:5000/api/orders",            {
-                method: "POST",
-
-                headers: {
-                    "Content-Type": "application/json"
-                },
-
-                body: JSON.stringify(order)
-            }
-        );
+    "https://glowara-015n.onrender.com/api/orders",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(order)
+    }
+);
 
 
       const responseText = await response.text();
