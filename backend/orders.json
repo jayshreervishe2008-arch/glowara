@@ -247,5 +247,77 @@
     ],
     "createdAt": "2026-08-19T12:35:52.681Z",
     "status": "New"
+  },
+  {
+    "orderId": "GW1787410645489",
+    "customer": {
+      "name": "Jayshree Vishe",
+      "phone": "7021562506",
+      "email": "jayshreervishe2008@gmail.com",
+      "address": "mmn",
+      "city": "abc",
+      "pincode": "123456"
+    },
+    "products": [
+      {
+        "id": "6a8436be69a0f0418afa6b27",
+        "name": "Relaxing Pillow Mist",
+        "brand": "Glowara",
+        "price": 299,
+        "oldPrice": 529,
+        "image": "/images/products/pillow-mist.jpg",
+        "quantity": 1
+      },
+      {
+        "id": "6a8436be69a0f0418afa6ad3",
+        "name": "Glow Highlighter",
+        "brand": "Glowara",
+        "price": 799,
+        "oldPrice": 1029,
+        "image": "/images/products/highlighter.jpg",
+        "quantity": 1
+      },
+      {
+        "id": 2,
+        "brand": "Glowara",
+        "name": "Hydrating Beauty Cream",
+        "category": "Skincare",
+        "price": 549,
+        "oldPrice": 799,
+        "rating": 4.7,
+        "reviews": 89,
+        "image": "images/products/cream.jpg",
+        "quantity": 1
+      },
+      {
+        "id": "6a8436be69a0f0418afa6b26",
+        "name": "Refreshing Mint Tea",
+        "brand": "Glowara",
+        "price": 699,
+        "oldPrice": 849,
+        "image": "/images/products/mint-tea.jpg",
+        "quantity": 5
+      },
+      {
+        "id": "6a8436be69a0f0418afa6b25",
+        "name": "Herbal Green Tea Blend",
+        "brand": "Glowara",
+        "price": 599,
+        "oldPrice": 989,
+        "image": "/images/products/green-tea.jpg",
+        "quantity": 1
+      },
+      {
+        "id": 5,
+        "name": "Vitamin C Brightening Serum",
+        "brand": "Glowara",
+        "price": 749,
+        "oldPrice": 1099,
+        "image": "images/products/vitamin-c.jpg",
+        "quantity": 1
+      }
+    ],
+    "createdAt": "2026-08-22T14:57:25.489Z",
+    "status": "New"
   }
 ]
