@@ -79,9 +79,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-const API_URL = "https://glowara-015n.onrender.com";
 
 
+const API_URL = "https://glowara-q1bu.onrender.com";
 const response =
     await fetch(
         `${API_URL}/api/products?${params.toString()}`
@@ -235,10 +235,9 @@ const response =
                             >
 
                                 <img
-                                    src="${product.image}"
-                                    alt="${product.name}"
-                                >
-
+    src="${product.image.replace('/images/', '/frontend/images/')}"
+    alt="${product.name}"
+>
                             </a>
 
 
@@ -435,13 +434,12 @@ const response =
 
         try {
 
-           const API_URL = "https://glowara-015n.onrender.com";
+           const API_URL = "https://glowara-q1bu.onrender.com";
 
 const response =
     await fetch(
         `${API_URL}/api/products/${productId}`
     );
-
             const data =
                 await response.json();
 
