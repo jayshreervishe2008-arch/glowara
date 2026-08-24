@@ -229,17 +229,17 @@ const response =
                             class="shop-product-image"
                         >
 
-                            <a
-                                href="product.html?id=${product._id}"
-                                class="product-link"
-                            >
-
-                                <img
-    src="${product.image.replace('/images/', '/frontend/images/')}"
-    alt="${product.name}"
+                           <a
+    href="product.html?id=${product._id}"
+    class="product-link"
 >
-                            </a>
 
+    <img
+        src="${product.image}"
+        alt="${product.name}"
+    >
+
+</a>
 
                             ${
                                 product.featured
@@ -435,7 +435,6 @@ const response =
         try {
 
            const API_URL = "https://glowara-q1bu.onrender.com";
-
 const response =
     await fetch(
         `${API_URL}/api/products/${productId}`
