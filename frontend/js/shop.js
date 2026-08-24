@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const API_URL = "https://glowara-015n.onrender.com";
 
+
 const response =
     await fetch(
         `${API_URL}/api/products?${params.toString()}`
@@ -434,11 +435,12 @@ const response =
 
         try {
 
-            const response =
-                await fetch(
-                    `/api/products/${productId}`
-                );
+           const API_URL = "https://glowara-015n.onrender.com";
 
+const response =
+    await fetch(
+        `${API_URL}/api/products/${productId}`
+    );
 
             const data =
                 await response.json();
